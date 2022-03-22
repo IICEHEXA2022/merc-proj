@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
  * @author SALA 02 - 1º AUTO
  */
-public class Cargo {
-    private int Cod_Carg;
+public class Produtos {
+    private int Cod_Prod;
     private String Descrição;
 
-    public int getCod_Carg() {
-        return Cod_Carg;
+    public int getCod_Prod() {
+        return Cod_Prod;
     }
 
-    public void setCod_Carg(int Cod_Carg) {
-        this.Cod_Carg = Cod_Carg;
+    public void setCod_Prod(int Cod_Prod) {
+        this.Cod_Prod = Cod_Prod;
     }
 
     public String getDescrição() {

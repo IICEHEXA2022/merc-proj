@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
  * @author SALA 02 - 1º AUTO
  */
-public class Fornecedor {
-    private int Cod_For;
+public class Funcionarios {
+    private int Cod_Fun;
     private String Nome;
-    private int Contato; 
+    private double Salario;
+    private int Contato;
 
-    public int getCod_For() {
-        return Cod_For;
+    public int getCod_Fun() {
+        return Cod_Fun;
     }
 
-    public void setCod_For(int Cod_For) {
-        this.Cod_For = Cod_For;
+    public void setCod_Fun(int Cod_Fun) {
+        this.Cod_Fun = Cod_Fun;
     }
 
     public String getNome() {
@@ -30,6 +31,14 @@ public class Fornecedor {
         this.Nome = Nome;
     }
 
+    public double getSalario() {
+        return Salario;
+    }
+
+    public void setSalario(double Salario) {
+        this.Salario = Salario;
+    }
+
     public int getContato() {
         return Contato;
     }
@@ -37,5 +46,5 @@ public class Fornecedor {
     public void setContato(int Contato) {
         this.Contato = Contato;
     }
-    }
-
+    
+}
