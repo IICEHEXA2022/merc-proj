@@ -30,14 +30,4 @@ public class FuncionariosDAO extends ExecuteSQL {
         }
         return finalResult;
     }
-    
-
-
-
-
-
-
-
-public class FuncionariosDAO {
-    
 }
