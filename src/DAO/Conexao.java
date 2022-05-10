@@ -1,14 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
-/**
- *
- * @author SALA 02 - 1º AUTO
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class Conexao {
-    
+
+    private static Connection conexao = null;
+
+    public static void abrirConexao() {
+        try {
+            Class.forName("con.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost/mercantil";
+            Conexao.conexao = DriverManager.getConnection(url, "root", "");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void fecharConexao(){
+        try {
+            Conexao.conexao.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

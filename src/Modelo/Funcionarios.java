@@ -14,6 +14,24 @@ public class Funcionarios {
     private String Nome;
     private double Salario;
     private int Contato;
+    private int Senha;
+    private String Login;
+
+    public int getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(int Senha) {
+        this.Senha = Senha;
+    }
+
+    public String getLogin() {
+        return Login;
+    }
+
+    public void setLogin(String Login) {
+        this.Login = Login;
+    }
 
     public int getCod_Fun() {
         return Cod_Fun;
