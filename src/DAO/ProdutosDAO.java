@@ -12,6 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ProdutosDAO {
 
@@ -62,4 +65,22 @@ public class ProdutosDAO {
             System.out.println(p);
         }
     }
+
+    public static void excluir(Produtos produtos) {
+        Conexao.abrirConexao();
+        String sql = "DELETE FROM produtos WHERE Cod_Prod = ?";
+
+        try {
+            PreparedStatement ps = (PreparedStatement) Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, produtos.getCod_Prod());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Produto Excluído Com Sucesso");
+
+        } catch (SQLException ex) {
+           
+            Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
