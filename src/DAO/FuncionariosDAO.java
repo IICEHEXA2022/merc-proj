@@ -1,33 +1,41 @@
-
 package DAO;
 
 import java.sql.*;
 import Modelo.Funcionarios;
+import java.util.ArrayList;
 
-public class FuncionariosDAO extends ExecuteSQL {
-    
-    public FuncionariosDAO (Connection con) {
-      super (con);
-}
-    public boolean Logar (String login, String senha) {
-        boolean finalResult = false;
-       
+public class FuncionariosDAO {
+
+    public ArrayList<Funcionarios> consultarFuncionarios() {
+        Conexao.abrirConexao();
+
+        ArrayList<Funcionarios> funcionarios = new ArrayList();
+
         try {
-            String consulta = "select Login, Senha from funcionarios " + "where Login = '" + login + "' and Senha = '" + senha + "'";
-            PreparedStatement ps = getCon().prepareStatement(consulta);
-            ResultSet rs = ps.executeQuery();
-            
-            if (rs != null) {
-                while (rs.next()) {
-                    Funcionarios a = new Funcionarios();
-                    a.setLogin(rs.getString(1));
-                    a.setSenha(rs.getInt(2));
-                    finalResult = true;
-                }
+            PreparedStatement stmt = Conexao.getConexao().prepareStatement("SELECT * FROM funcionarios");
+            ResultSet res = stmt.executeQuery();
+            while (res.next()) {
+                Funcionarios f = new Funcionarios();
+                f.setId(res.getInt("Cod_Fun"));
+                f.setContato(res.getInt("Contato"));
+                f.setSalario(res.getDouble("Salario"));
+                f.setNome(res.getString("Nome"));
+                f.setLogin(res.getString("Login"));
+                f.setSenha(res.getString("Senha"));
+                funcionarios.add(f);
+                System.out.println(f);
             }
-        } catch (SQLException ex) {
-            ex.getMessage();
+            Conexao.fecharConexao();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return finalResult;
+        return funcionarios;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Lista de Funcionários: ");
+        FuncionariosDAO fDAO = new FuncionariosDAO();
+        
+        fDAO.consultarFuncionarios();
     }
 }

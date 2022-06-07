@@ -5,7 +5,7 @@ import java.sql.*;
 public class ExecuteSQL {
     private Connection con;
     public ExecuteSQL(Connection con) {
-        setCon(con);
+        this.con = con;
     }
     public Connection getCon(){
         return con;

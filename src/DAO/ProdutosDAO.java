@@ -5,10 +5,61 @@
  */
 package DAO;
 
-/**
- *
- * @author SALA 02 - 1º AUTO
- */
+import Modelo.Produtos;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProdutosDAO {
-    
+
+    public static boolean Inserir_Produto(Produtos a) {
+        Connection con = Conexao.abrirConexao();
+        String sql = "insert into produtos(Cod_Prod, Descrição) value(?, ?)";
+
+        try {
+
+            PreparedStatement ps = Conexao.getConexao().prepareStatement(sql);
+
+            ps.setInt(1, a.getCod_Prod());
+            ps.setString(2, a.getDescricao());
+            ps.execute();
+            return true;
+
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return false;
+    }
+
+    public List<Produtos> getLista() {
+        List<Produtos> produtos = new ArrayList<Produtos>();
+
+        try {
+            Connection con = Conexao.abrirConexao();
+            PreparedStatement stmt = con.prepareStatement("select * from produtos");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produtos p = new Produtos();
+                p.setCod_Prod(rs.getInt("Cod_Prod"));
+                p.setDescricao(rs.getString("Descrição"));
+                produtos.add(p);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return produtos;
+    }
+
+    public static void main(String[] args) {
+        ProdutosDAO dao = new ProdutosDAO();
+        for (Produtos p : dao.getLista()) {
+            System.out.println(p);
+        }
+    }
 }

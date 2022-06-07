@@ -10,59 +10,65 @@ package Modelo;
  * @author SALA 02 - 1º AUTO
  */
 public class Funcionarios {
-    private int Cod_Fun;
-    private String Nome;
-    private double Salario;
-    private int Contato;
-    private int Senha;
-    private String Login;
+    private int id;
+    private String nome;
+    private double salario;
+    private int contato;
+    private String senha;
+    private String login;
 
-    public int getSenha() {
-        return Senha;
+    public int getId() {
+        return id;
     }
 
-    public void setSenha(int Senha) {
-        this.Senha = Senha;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String Login) {
-        this.Login = Login;
-    }
-
-    public int getCod_Fun() {
-        return Cod_Fun;
-    }
-
-    public void setCod_Fun(int Cod_Fun) {
-        this.Cod_Fun = Cod_Fun;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public double getSalario() {
-        return Salario;
+        return salario;
     }
 
-    public void setSalario(double Salario) {
-        this.Salario = Salario;
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
     public int getContato() {
-        return Contato;
+        return contato;
     }
 
-    public void setContato(int Contato) {
-        this.Contato = Contato;
+    public void setContato(int contato) {
+        this.contato = contato;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionarios{" + "id=" + id + ", nome=" + nome + ", salario=" + salario + ", contato=" + contato + ", senha=" + senha + ", login=" + login + '}';
+    }
+
     
 }

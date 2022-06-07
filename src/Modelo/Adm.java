@@ -5,11 +5,19 @@
  */
 package Modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author SALA 02 - 1º AUTO
  */
+
 public class Adm {
+
     private int Cod_Admin;
     private String Nome;
     private int Senha;
